@@ -1,0 +1,18 @@
+{
+    "baseline_tahap1": {
+        "accuracy": 0.43732045332575686,
+        "f1_score": 0.4002691790040377
+    },
+    "tuned_tahap2": {
+        "accuracy": 0.6789784386147678,
+        "f1_score": 0.5049895341478849,
+        "best_fitness_ga": 0.5762908523259445,
+        "ga_config": {
+            "pop_size": 16,
+            "generations": 18,
+            "crossover_rate": 0.85,
+            "mutation_rate": 0.12,
+            "elitism": 1
+        }
+    }
+}
