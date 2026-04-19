@@ -337,7 +337,7 @@ with tab_overview:
         metrics_rows.append({"stage": stage_name, **metrics})
 
     metrics_df = pd.DataFrame(metrics_rows)
-    st.dataframe(metrics_df, width="stretch")
+    st.dataframe(metrics_df, use_container_width=True)
 
     chart_col, metric_col = st.columns([1.2, 1])
     with chart_col:
@@ -385,7 +385,7 @@ with tab_ablation:
     if ablation_results.empty:
         st.info("Ablation results not found.")
     else:
-        st.dataframe(ablation_results, width="stretch")
+        st.dataframe(ablation_results, use_container_width=True)
 
         setting = st.selectbox(
             "Select setting",
@@ -436,7 +436,7 @@ with tab_membership:
                 for term, values in term_map.items()
                 if isinstance(values, list) and len(values) == 3
             ]
-            st.dataframe(pd.DataFrame(table_rows), width="stretch")
+            st.dataframe(pd.DataFrame(table_rows), use_container_width=True)
 
             if table_rows:
                 min_x = min(row["a"] for row in table_rows)
@@ -501,7 +501,7 @@ with tab_explorer:
             df = df[df[col].isin(selected)]
 
     st.caption(f"Rows: {len(df)}")
-    st.dataframe(df, width="stretch", height=520)
+    st.dataframe(df, use_container_width=True, height=520)
 
 with tab_artifacts:
     st.subheader("Saved Plots")
@@ -522,4 +522,4 @@ with tab_artifacts:
             image_labels = [str(path.relative_to(RESULTS_DIR)) for path in image_paths]
             choice = st.selectbox("Select image", image_labels)
             selected_path = image_paths[image_labels.index(choice)]
-            st.image(str(selected_path), caption=choice, width="stretch")
+            st.image(str(selected_path), caption=choice, use_column_width=True)
